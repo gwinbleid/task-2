@@ -1,14 +1,11 @@
 const solution = function(graph, start, finish)  {
-    // обьект для отслеживания минимальной 
-    // стоимости каждого узла (на конечную сначала Infinity)
+    // обьект для отслеживания минимальной стоимости каждого узла (на конечную сначала Infinity)
     const trackedCosts = Object.assign({finish: Infinity}, graph[start]);
 
-    // Обьект, в котором указываем 
-    // родителей пройденного узла
+    // Обьект, в котором указываем родителей пройденного узла
     const trackedParents = {finish: null};
 
-    // на старте всем дочерним узлам start'а указываем
-    // родителя - старт
+    // на старте всем дочерним узлам start'а указываем родителя - старт
     Object.keys(graph[start]).forEach(item => trackedParents[item] = 'start');
 
     // Обработанные узлы
@@ -18,8 +15,7 @@ const solution = function(graph, start, finish)  {
     let node = findLowestCostNode(trackedCosts, processedNodes);
 
     while (node) {
-        // указываем , сколько нам стоило,
-        // чтобы до этого узла добраться
+        // указываем , сколько нам стоило, чтобы до этого узла добраться
         let costToReachNode = trackedCosts[node];
 
         // указывем дочерние узлы ноды
